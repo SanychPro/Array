@@ -32,18 +32,24 @@ public class Main {
                 max = numbers[i];
                 posMax = i;
             }
+        }
+
+        for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] < 0) {
                 firstIndex = i;
                 break;
             }
-
         }
+
         double sum = 0;
         int count = 0;
-        for (int i = firstIndex + 1; i < numbers.length; i++) {
+        for (
+                int i = firstIndex + 1;
+                i < numbers.length; i++) {
             sum += numbers[i];
             count++;
         }
+
         double average = sum / count;
 
         System.out.println("Елементи масиву: " + Arrays.toString(numbers));
