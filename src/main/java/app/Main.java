@@ -1,10 +1,15 @@
 package app;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int[] numbers = {-99, -98, -97, -96, -95, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 95, 96, 97, 98, 99};
+        Random rand = new Random();
+        int[] numbers = new int[20];
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = rand.nextInt(201) - 100;
+        }
         int sumNegative = 0;
         int numberParity = 0;
         int numberNoParity = 0;
@@ -13,6 +18,7 @@ public class Main {
         int posMin = 0;
         int posMax = 0;
         int firstIndex = 0;
+        boolean negIndex = false;
 
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] < 0) {
@@ -37,6 +43,7 @@ public class Main {
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] < 0) {
                 firstIndex = i;
+                negIndex = true;
                 break;
             }
         }
@@ -58,6 +65,11 @@ public class Main {
         System.out.println("Кількість непарних чисел: " + numberNoParity);
         System.out.println("Найменший елемент: " + min + " (з індексом " + posMin + ")");
         System.out.println("Найбільший елемент: " + max + " (з індексом " + posMax + ")");
-        System.out.printf("Середнє арифметичне чисел після першого від'ємного числа: %.2f", average);
+        if (negIndex) {
+            System.out.printf("Середнє арифметичне чисел після першого від'ємного числа: %.2f", average);
+        } else {
+            System.out.println("Немає від'ємних чисел");
+        }
+
     }
 }
